@@ -3,11 +3,11 @@ using Emgu.CV.Structure;
 using Emgu.CV.Util;
 using Emgu.CV.Dnn;
 
-// Read the model and weights From the YOLO Detection Model https://pjreddie.com/darknet/yolo/
-// Put https://pjreddie.com/media/files/yolov3.weights in the detection folder! It's too big for GitHub
+// Read the model and weights From the YOLO Detection Model 
+// You can also download a better and bigger model from https://pjreddie.com/darknet/yolo/
 var net = Emgu.CV.Dnn.DnnInvoke.ReadNetFromDarknet(
-    "./detection/yolov3.cfg",
-    "./detection/yolov3.weights"
+    "./detection/yolov3-tiny.cfg",
+    "./detection/yolov3-tiny.weights"
 );
 
 // Read the labels for detected objects
@@ -114,7 +114,7 @@ while (true)
 
     //restore the image to its original size
     CvInvoke.Resize(frameOut, frameOut, new System.Drawing.Size(0, 0), 4, 4);
-    CvInvoke.Imshow("Webcam Object Detection", frameOut);
+    CvInvoke.Imshow("Press ESC to Exit. Webcam Object Detection", frameOut);
 
     //break on escape key
     if (CvInvoke.WaitKey(1) == 27)
